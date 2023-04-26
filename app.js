@@ -1,4 +1,3 @@
-//console.log('E-Commerce API');
 require('dotenv').config()
 require('express-async-errors')
 //express
@@ -8,8 +7,7 @@ const app= express();
 const morgan = require('morgan')
 const cookieParser= require('cookie-parser')
 const rateLimiter= require('express-rate-limit')
-const helmet= require('express-rate-limit')
-const rateLimiter= require('express-rate-limit')
+const helmet= require('helmet')
 const xss= require('xss-clean')
 const cors= require('cors')
 const mongoSanitize= require('express-mongo-sanitize')
@@ -25,15 +23,6 @@ const orderRouter= require('./routes/orderRoutes')
 const notFoundMiddleware= require('./middleware/not-found')
 const errorHandlerMiddleware= require('./middleware/error-handler');
 
-app.get('/',(req,res)=>{
-    res.send('shopping-app')
-})
-app.get('/api/v1',(req,res)=>{
-    console.log(req.signedCookies)
-    res.send('shopping-app')
-})
-app.use(morgan('tiny'))
-
 app.set('trust proxy',1)
 app.use(rateLimiter({
     windowsMs: 15 * 60 * 1000,
@@ -43,6 +32,7 @@ app.use(helmet())
 app.use(cors())
 app.use(xss())
 app.use(mongoSanitize())
+
 app.use(express.json())
 app.use(cookieParser(process.env.JWT_SECRET))
 
@@ -66,3 +56,14 @@ const start= async()=>{
     }
 }
 start()
+
+/*
+app.get('/',(req,res)=>{
+    res.send('shopping-app')
+})
+app.get('/api/v1',(req,res)=>{
+    console.log(req.signedCookies)
+    res.send('shopping-app')
+})
+app.use(morgan('tiny'))
+*/
