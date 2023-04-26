@@ -23,6 +23,10 @@ const orderRouter= require('./routes/orderRoutes')
 const notFoundMiddleware= require('./middleware/not-found')
 const errorHandlerMiddleware= require('./middleware/error-handler');
 
+app.get('/',(req,res)=>{
+    res.send('shopping-app')
+})
+
 app.set('trust proxy',1)
 app.use(rateLimiter({
     windowsMs: 15 * 60 * 1000,
