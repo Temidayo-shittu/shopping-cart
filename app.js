@@ -11,6 +11,10 @@ const helmet= require('helmet')
 const xss= require('xss-clean')
 const cors= require('cors')
 const mongoSanitize= require('express-mongo-sanitize')
+//swagger
+const swaggerUI= require('swagger-ui-express')
+const YAML= require('yamljs')
+const swaggerDocument= YAML.load('./swagger.yaml')
 //database
 const connectDB= require('./db/connect')
 //Routes
@@ -22,10 +26,6 @@ const orderRouter= require('./routes/orderRoutes')
 //Middleware
 const notFoundMiddleware= require('./middleware/not-found')
 const errorHandlerMiddleware= require('./middleware/error-handler');
-
-app.get('/',(req,res)=>{
-    res.send('shopping-app')
-})
 
 app.set('trust proxy',1)
 app.use(rateLimiter({
@@ -39,6 +39,13 @@ app.use(mongoSanitize())
 
 app.use(express.json())
 app.use(cookieParser(process.env.JWT_SECRET))
+
+
+app.get('/',(req,res)=>{
+    res.send('<h1>Shopping App</h1><a href="/api-docs">Documentation</a>')
+})
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
+
 
 app.use('/api/v1/auth',authRouter)
 app.use('/api/v1/users',userRouter)

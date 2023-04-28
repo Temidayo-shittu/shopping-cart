@@ -1,0 +1,721 @@
+openapi: 3.0.0
+info:
+  title: Shopping-App
+  contact: {}
+  version: '1.0'
+servers:
+- url: https://shopping-cart-app-wmmv.onrender.com/api/v1
+  variables: {}
+paths:
+  /auth/register:
+    post:
+      tags:
+      - Auth
+      summary: Register User
+      operationId: RegisterUser
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/RegisterUserRequest'
+              - example:
+                  name: asher
+                  email: asher@gmail.com
+                  password: secret
+            example:
+              name: asher
+              email: asher@gmail.com
+              password: secret
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /auth/login:
+    post:
+      tags:
+      - Auth
+      summary: Login User
+      operationId: LoginUser
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/LoginUserRequest'
+              - example:
+                  email: asher@gmail.com
+                  password: secret
+            example:
+              email: asher@gmail.com
+              password: secret
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /auth/logout:
+    get:
+      tags:
+      - Auth
+      summary: Logout User
+      operationId: LogoutUser
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /users:
+    get:
+      tags:
+      - User
+      summary: Get All Users
+      operationId: GetAllUsers
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /users/643fc3d9cdd6fe2ced0c6dcb:
+    get:
+      tags:
+      - User
+      summary: Get Single User
+      operationId: GetSingleUser
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /users/showMe:
+    get:
+      tags:
+      - User
+      summary: Show Current User
+      operationId: ShowCurrentUser
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /users/updateUserPassword:
+    patch:
+      tags:
+      - User
+      summary: Update User Password
+      operationId: UpdateUserPassword
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UpdateUserPasswordRequest'
+              - example:
+                  oldPassword: newsecre
+                  newPassword: secret
+            example:
+              oldPassword: newsecre
+              newPassword: secret
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /users/updateUser:
+    patch:
+      tags:
+      - User
+      summary: Update User
+      operationId: UpdateUser
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UpdateUserRequest'
+              - example:
+                  name: dreykob
+                  email: dreykob@gmail.com
+            example:
+              name: dreykob
+              email: dreykob@gmail.com
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /products:
+    post:
+      tags:
+      - Product
+      summary: Create Product
+      operationId: CreateProduct
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CreateProductRequest'
+              - example:
+                  name: accent chair
+                  price: 25999
+                  quantity: 10
+                  description: A very nice chair
+                  category: office
+                  company: marcos
+            example:
+              name: accent chair
+              price: 25999
+              quantity: 10
+              description: A very nice chair
+              category: office
+              company: marcos
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+    get:
+      tags:
+      - Product
+      summary: Get All Products
+      operationId: GetAllProducts
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /products/64429dff2885485d25319d08:
+    patch:
+      tags:
+      - Product
+      summary: Update Product
+      operationId: UpdateProduct
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UpdateProductRequest'
+              - example:
+                  quantity: 20
+            example:
+              quantity: 20
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /products/64429d4a2885485d25319d06:
+    get:
+      tags:
+      - Product
+      summary: Get Single Product
+      operationId: GetSingleProduct
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /products/64429a252885485d25319d02:
+    delete:
+      tags:
+      - Product
+      summary: Delete Product
+      operationId: DeleteProduct
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /carts:
+    get:
+      tags:
+      - Cart
+      summary: Get All Cart Items
+      operationId: GetAllCartItems
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    post:
+      tags:
+      - Cart
+      summary: Create Cart Items
+      operationId: CreateCartItems
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CreateCartItemsRequest'
+              - example:
+                  name: Arm-Chair
+                  quantity: 5
+                  comment: My choice for this chair is due to its durability
+                  product: 64429d4a2885485d25319d06
+            example:
+              name: Arm-Chair
+              quantity: 5
+              comment: My choice for this chair is due to its durability
+              product: 64429d4a2885485d25319d06
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /carts/6442abe3511455bddffb216a:
+    get:
+      tags:
+      - Cart
+      summary: Get Single Cart Item
+      operationId: GetSingleCartItem
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    patch:
+      tags:
+      - Cart
+      summary: Update Cart Items
+      operationId: UpdateCartItems
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UpdateCartItemsRequest'
+              - example:
+                  quantity: 3
+            example:
+              quantity: 3
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    delete:
+      tags:
+      - Cart
+      summary: Delete Cart Items
+      operationId: DeleteCartItems
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /carts/showAllMyCart:
+    get:
+      tags:
+      - Cart
+      summary: Show Current User Cart
+      operationId: ShowCurrentUserCart
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /orders:
+    post:
+      tags:
+      - Order
+      summary: Create Order
+      operationId: CreateOrder
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CreateOrderRequest'
+              - example:
+                  tax: 400
+                  shippingFee: 500
+                  items:
+                  - name: Gas-Cooker
+                    price: 110000
+                    quantity: 5
+                    cart: 64490418c56207a1fd7b651b
+            example:
+              tax: 400
+              shippingFee: 500
+              items:
+              - name: Gas-Cooker
+                price: 110000
+                quantity: 5
+                cart: 64490418c56207a1fd7b651b
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    get:
+      tags:
+      - Order
+      summary: Get All Orders
+      operationId: GetAllOrders
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /orders/64490c120dcf5ee7453fb062:
+    get:
+      tags:
+      - Order
+      summary: Get Single Order
+      operationId: GetSingleOrder
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    patch:
+      tags:
+      - Order
+      summary: Update Order
+      operationId: UpdateOrder
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UpdateOrderRequest'
+              - example:
+                  paymentIntentId: someRandomValue
+            example:
+              paymentIntentId: someRandomValue
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    delete:
+      tags:
+      - Order
+      summary: Delete Order
+      operationId: DeleteOrder
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /orders/showAllMyOrders:
+    get:
+      tags:
+      - Order
+      summary: Show Current User Orders
+      operationId: ShowCurrentUserOrders
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+components:
+  schemas:
+    RegisterUserRequest:
+      title: RegisterUserRequest
+      required:
+      - name
+      - email
+      - password
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        name: asher
+        email: asher@gmail.com
+        password: secret
+    LoginUserRequest:
+      title: LoginUserRequest
+      required:
+      - email
+      - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        email: asher@gmail.com
+        password: secret
+    UpdateUserPasswordRequest:
+      title: UpdateUserPasswordRequest
+      required:
+      - oldPassword
+      - newPassword
+      type: object
+      properties:
+        oldPassword:
+          type: string
+        newPassword:
+          type: string
+      example:
+        oldPassword: newsecre
+        newPassword: secret
+    UpdateUserRequest:
+      title: UpdateUserRequest
+      required:
+      - name
+      - email
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+      example:
+        name: dreykob
+        email: dreykob@gmail.com
+    CreateProductRequest:
+      title: CreateProductRequest
+      required:
+      - name
+      - price
+      - quantity
+      - description
+      - category
+      - company
+      type: object
+      properties:
+        name:
+          type: string
+        price:
+          type: integer
+          format: int32
+        quantity:
+          type: integer
+          format: int32
+        description:
+          type: string
+        category:
+          type: string
+        company:
+          type: string
+      example:
+        name: accent chair
+        price: 25999
+        quantity: 10
+        description: A very nice chair
+        category: office
+        company: marcos
+    UpdateProductRequest:
+      title: UpdateProductRequest
+      required:
+      - quantity
+      type: object
+      properties:
+        quantity:
+          type: integer
+          format: int32
+      example:
+        quantity: 20
+    DeleteProductRequest:
+      title: DeleteProductRequest
+      required:
+      - name
+      - price
+      - quantity
+      - description
+      - category
+      - company
+      type: object
+      properties:
+        name:
+          type: string
+        price:
+          type: integer
+          format: int32
+        quantity:
+          type: integer
+          format: int32
+        description:
+          type: string
+        category:
+          type: string
+        company:
+          type: string
+      example:
+        name: accent chair
+        price: 25999
+        quantity: 10
+        description: A very nice chair
+        category: office
+        company: marcos
+    CreateCartItemsRequest:
+      title: CreateCartItemsRequest
+      required:
+      - name
+      - quantity
+      - comment
+      - product
+      type: object
+      properties:
+        name:
+          type: string
+        quantity:
+          type: integer
+          format: int32
+        comment:
+          type: string
+        product:
+          type: string
+      example:
+        name: Arm-Chair
+        quantity: 5
+        comment: My choice for this chair is due to its durability
+        product: 64429d4a2885485d25319d06
+    UpdateCartItemsRequest:
+      title: UpdateCartItemsRequest
+      required:
+      - quantity
+      type: object
+      properties:
+        quantity:
+          type: integer
+          format: int32
+      example:
+        quantity: 3
+    DeleteCartItemsRequest:
+      title: DeleteCartItemsRequest
+      required:
+      - quantity
+      type: object
+      properties:
+        quantity:
+          type: integer
+          format: int32
+      example:
+        quantity: 3
+    CreateOrderRequest:
+      title: CreateOrderRequest
+      required:
+      - tax
+      - shippingFee
+      - items
+      type: object
+      properties:
+        tax:
+          type: integer
+          format: int32
+        shippingFee:
+          type: integer
+          format: int32
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Item'
+          description: ''
+      example:
+        tax: 400
+        shippingFee: 500
+        items:
+        - name: Gas-Cooker
+          price: 110000
+          quantity: 5
+          cart: 64490418c56207a1fd7b651b
+    Item:
+      title: Item
+      required:
+      - name
+      - price
+      - quantity
+      - cart
+      type: object
+      properties:
+        name:
+          type: string
+        price:
+          type: integer
+          format: int32
+        quantity:
+          type: integer
+          format: int32
+        cart:
+          type: string
+      example:
+        name: Gas-Cooker
+        price: 110000
+        quantity: 5
+        cart: 64490418c56207a1fd7b651b
+    UpdateOrderRequest:
+      title: UpdateOrderRequest
+      required:
+      - paymentIntentId
+      type: object
+      properties:
+        paymentIntentId:
+          type: string
+      example:
+        paymentIntentId: someRandomValue
+  securitySchemes:
+    httpBearer:
+      type: http
+      scheme: bearer
+security:
+- httpBearer: []
+tags:
+- name: Auth
+- name: User
+- name: Product
+- name: Cart
+- name: Order
