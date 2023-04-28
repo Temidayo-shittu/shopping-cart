@@ -88,7 +88,14 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-  /users/643fc3d9cdd6fe2ced0c6dcb:
+  /users/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The users ID
     get:
       tags:
       - User
@@ -211,7 +218,14 @@ paths:
           headers: {}
       deprecated: false
       security: []
-  /products/64429dff2885485d25319d08:
+  /products/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The products ID
     patch:
       tags:
       - Product
@@ -235,7 +249,7 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-  /products/64429d4a2885485d25319d06:
+  
     get:
       tags:
       - Product
@@ -248,7 +262,7 @@ paths:
           headers: {}
       deprecated: false
       security: []
-  /products/64429a252885485d25319d02:
+  
     delete:
       tags:
       - Product
@@ -301,7 +315,14 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-  /carts/6442abe3511455bddffb216a:
+  /carts/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The carts ID
     get:
       tags:
       - Cart
@@ -406,7 +427,14 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-  /orders/64490c120dcf5ee7453fb062:
+  /orders/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The orders ID
     get:
       tags:
       - Order
