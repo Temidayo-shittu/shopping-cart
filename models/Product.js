@@ -63,4 +63,15 @@ const ProductSchema= new mongoose.Schema({
       },
 },{timestamps: true})
 
+ProductSchema.virtual("carts", {
+  ref: "Cart",
+  localField: "_id",
+  foreignField: "product",
+  justOne: false,
+});
+
+ProductSchema.pre('remove',async function(next){
+  await this.model('Cart').deleteMany({product:this._id})
+})
+
 module.exports= mongoose.model('Product',ProductSchema)
